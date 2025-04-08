@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Новости</title>
+</head>
+<body>
+    <h1>Последние новости</h1>
+    {% for post in news %}
+    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+        <h3>{{ post.author }}</h3>
+        <p>{{ post.content }}</p>
+        <small>{{ post.timestamp }}</small>
+        <a href="{{ url_for('news_detail', news_id=post.id) }}">Комментарии ({{ post.comments|length }})</a>
+        <a href="{{ url_for('like_news', news_id=post.id, user_id='anon') }}">Лайков: {{ post.likes|length }}</a>
+    </div>
+    {% endfor %}
+</body>
+</html>

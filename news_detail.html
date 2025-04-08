@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ news.author }} - {{ news.content|truncate(30) }}</title>
+</head>
+<body>
+    <h2>{{ news.author }}</h2>
+    <p>{{ news.content }}</p>
+    <hr>
+
+    <h3>Комментарии</h3>
+    <form method="POST">
+        <input type="text" name="author" placeholder="Ваше имя" required>
+        <textarea name="content" placeholder="Ваш комментарий" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+
+    {% for comment in comments %}
+    <div style="margin: 10px; padding: 5px; border-bottom: 1px solid #eee;">
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.content }}</p>
+        <small>{{ comment.timestamp }}</small>
+    </div>
+    {% endfor %}
+</body>
+</html>
